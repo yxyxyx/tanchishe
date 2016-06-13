@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tanchishe</title>
+<style>
+  .box{
+    margin:auto;
+  	width: 1200px;
+  	height: 800px;
+  	margin:auto 300px;
+  	border: 1px solid black;
+    background: #ccc;
+    position: relative;
+    }
+	#sence{
+		width:600px;
+		height: 600px;
+		border: 1px solid black;
+		border-bottom: none;
+		border-right: none;
+		position: absolute;
+		margin: auto;
+		top:0;
+		left:0;
+		right: 0;
+		bottom: 0;
+	}
+	.shape{
+		width:600px;
+		height: 600px;
+		border: 1px solid black;
+		position: absolute;
+		margin: auto;
+		top:0;
+		left:0;
+		right: 0;
+		bottom: 0;
+		z-index: 10;
+		text-align: center;
+		background: #238421;
+		background-image: url(./image/shape.gif);
+    background-repeat: no-repeat;
+    background-position: 50px 100px;
+	}
+	.shape span{
+		float: left;
+		font-size: 46px;
+		color: orange;
+		margin-left: 90px;
+    margin-top: 30px;
+	}
+	.come{
+		float: left;
+		padding: 20px 100px;
+		border:1px solid black;
+		background: green;
+		color: white;
+		font-size: 40px;
+		border-radius:10%;
+		cursor: pointer;
+		position: absolute;
+		top:300px;
+		left:120px;
+	}
+	.block{
+		float: left;
+		width:28px;
+		height:28px;
+		margin-bottom: 1px;
+		margin-right: 1px;
+		background: cyan;
+	}
+	.she{
+		background: purple;
+    border-radius: 50%;
+	}
+	.shiwu{
+		background: orange;
+    border-radius: 50%;
+	}
+	.tip{
+		position: absolute;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+    bottom: 0;
+    width: 450px;
+		height: 300px;
+    display: none;
+    background-image: url(./image/tip2.jpg);
+    background-repeat: no-repeat;
+    background-position: -120px -20px;
+    border: 2px solid #689712;  
+	}
+    .over{
+     float: left;
+     padding: 5px;
+     margin-left: 90px;
+     margin-top: 90px;
+     font-family: "microsoft yahei";
+     font-size: 40px;
+     font-weight: 800;
+     color: orange;
+     background:green;
+     border:1px solid black;
+     border-radius:10%;
+    }
+    .score{
+    	float: left;
+    	padding: 10px;
+    	/*margin-top:10px;*/
+    	margin-left:130px;
+    }
+    .zi{
+    	float: left;
+    	font-size: 36px;
+    	font-style: '微软雅黑';
+    	font-weight: 800;
+    }
+    input{
+    	float: left;
+    	margin-top:10px;
+        margin-left: 40px;
+        border: none;
+    }
+    .cxks{
+      position: absolute;
+      left: 2px;
+      bottom: 2px;
+      float: left;
+      padding: 5px;
+      font-size: 20px;
+      background:#ccc;
+      color: black;
+      border:1px solid black;
+      border-radius:10%;
+      cursor: pointer; 
+    }
+    .close{
+    	position: absolute;
+      right: 2px;
+      bottom: 2px;
+    	float: left;
+    	padding: 5px;
+    	font-size: 20px;
+    	background:#ccc;
+    	color: black;
+    	border:1px solid black;
+    	border-radius:10%;
+    	cursor: pointer;
+    }
+    .zuo{
+    	float:left;
+    	width: 290px;
+    	height: 780px;
+    	margin-top:9px; 
+    	background: #654875;
+    	border:1px solid black;
+    }
+    .you{
+    	float:right;
+    	width: 290px;
+    	height: 780px;
+    	margin-top:9px; 
+    	background: #654875;
+    	border:1px solid black;
+    }
+    .tubiao{
+    	float: left;
+    	margin: 10px;
+    	width: 270px;
+    	height: 200px;
+    	border:1px solid #687946;
+    	background-image: url(./image/she1.jpg);
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      position: relative;
+    }
+    .jieshao{
+    	position: absolute;
+    	width: 270px;
+    	height: 360px;
+    	background-image: url(./image/she9.jpg);
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    	top:242px;
+      right: 10px;
+    	z-index: 10;
+    }
+    .shuoming{
+    	float: left;
+    	width: 270px;
+    	height: 360px;
+    	margin:10px;
+    	background: #128764;
+    	background-image: url(./image/she4.jpg);
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+    .maddin{
+    	float: left;
+    	width: 270px;
+    	height: 360px;
+    	margin:10px;
+    	background: #128764;
+    	background-image: url(./image/she6.jpg);
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+    .qujian{
+        float: left;
+        width: 270px;
+        text-align: center;
+        height: 170px;
+    }
+    .nanyi{
+        float: left;
+        margin-top: 20px;
+        width: 270px;
+        text-align: center;
+        height: 170px;
+        position: relative;
+    }
+    .done{
+    	position: absolute;
+    	bottom: 10px;
+    	right: 10px;
+    	padding: 5px 10px;
+    	border: 1px solid black;
+      border-radius: 10%;
+    	cursor: pointer;
+    }
+    .done:hover{
+      background: green;
+    }
+    .qujian span{
+        float: left;
+        padding: 3px 20px;
+        margin:3px 50px;
+        font-size: 16px;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    #te{
+        float: left;
+        font-weight: 800;
+        font-size: 30px;
+        background: none;
+        color: black;
+        margin:2px 10px;
+        padding: 3px;
+
+    }
+    #da{
+    	float: left;
+    	margin:20px;
+    	font-size: 40px;
+    }
+    .xiao{
+    	float: left;
+    	font-weight: 800;
+    	font-size: 20px;
+        margin:5px 15px;
+    }
+    .kongzhi{
+        float: left;
+    	margin: 10px;
+    	width: 270px;
+    	height: 156px;
+    	border:1px solid #687946;
+    	background-image: url(./image/she2.jpg);
+        background-repeat: no-repeat;
+        background-position:0 0;	
+    }
+    .down{
+    	float: left;
+    	margin: 10px;
+    	width: 270px;
+    	height: 156px;
+    	border:1px solid #687946;
+    	background-image: url(./image/she5.jpg);
+        background-repeat: no-repeat;
+        background-position:0 0;
+    }
+    .kong{
+    	float: right;
+    	width: 142px;
+    	height: 154px;
+    	opacity: 0.4;
+    }
+    .start,.set{
+    	float: left;
+    	margin-top: 14px;
+    	width: 120px;
+    	height: 36px;
+    	cursor: pointer;
+    }
+    .goout{
+    	float: left;
+    	margin-top: 10px;
+    	width: 120px;
+    	height: 36px;
+    	cursor: pointer;
+    }
+    .tishi{
+        position: absolute;
+        left:400px;
+        top:25px;
+    }
+    .tishi1{
+        position: absolute;
+        left:400px;
+        bottom:25px;
+    }
+    .ou{
+      float: right;
+    	padding: 10px;
+    	margin:5px 40px;
+    	background: #657459;
+    	border: 1px solid black;
+    	color: black;
+    	font-size: 16px;
+    }
+    .bian{
+        background: green;
+        color:white;
+        font-weight: 800;
+    }
+    .change{
+      float: left;
+      padding:10px;
+      background: orange;
+      margin-left: 50px;
+    }
+    .active{
+      background: green;
+    }
+    #style{
+      float: left;
+      padding: 3px 20px;
+      font-size:16px;
+      margin-left: 50px;
+      background: green;
+      border-color: black;
+    }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="zuo">
+      <div class="tubiao">
+      
+      </div>
+      <div class="shuoming">
+      <div id="da">游戏说明:</div>
+      <div class="xiao">开始游戏:点击下方开始</div>
+      <div class="xiao">暂停游戏:空格</div>
+      <div class="xiao">继续游戏:空格</div>
+      <div class="xiao">向左移动: ← </div>
+      <div class="xiao">向右移动: → </div>
+      <div class="xiao">向上移动: ↑ </div>
+      <div class="xiao">向下移动: ↓ </div>
+    </div>
+      
+      <div class="down">	
+      </div>
+    </div>
+    <div id="sence"></div>
+    <div class="shape">
+      <span id="tan">欢迎来到贪吃蛇游戏</span>
+      <div class="come">进入游戏</div>
+    </div>
+    <div class="tip">
+      <div class="over">GAME OVER</div>
+	  <div class="score">
+	     <i class="zi" ="zi">Score:</i><br/>
+	     <input id="biao1" value="0" type="text" size="3" disabled="0" style="height: 40px; width: 100px;background:none; color: yellow; font-size:36px; font-weight: 800">
+	  </div>
+    <div class="cxks">重新开始</div>
+	  <div class="close">关闭</div>
+	</div>
+	<div class="you">
+	    <div class="tishi">
+	     <i class="zi">您的目前得分为:</i class="zi">
+
+	     <input id="biao2" value="0" type="text" disabled="none" style="height: 30px; background: #ccc; width: 40px; font-size: 30px">
+	    </div>
+	    
+		<div class="tubiao"></div>
+    <div class="jieshao"></div>
+		<div class="maddin">
+         <div class="qujian">
+            <span id="te">区间选择设置</span>
+            <span data="15" class="wu">15x15</span>
+            <span data="20" class="active">20x20</span>
+            <span data="30" class="san">30x30</span>
+            <input type='text' id="biao" placeholder="请输入5-40的数字">   
+         </div>
+         <div class="nanyi">
+            <span id="te">难易选择设置</span>
+            <select id="style">
+                <option value="500" id="easy">简单</option>
+                <option value="300" id="normal">普通</option>
+                <option value="100" id="difficult">困难</option>
+            </select>
+            <botton class="done">完成</botton>
+         </div> 
+      </div>
+		<div class="kongzhi">
+		  <div class="tishi1">
+	        <i class="zi">全民益智游戏等你来挑战</i class="zi">
+	      </div>
+		  <div class="kong">
+			    <span class="start"></span>
+			    <span class="set"></span>
+			    <span class="goout"></span>
+      </div>
+		</div>
+	</div>
+  </div>
+</body>
+<script src="./js/jquery-1.12.0.js"></script>
+<script>
+$(function(){
+  //布局
+  var speed;
+  var hang=20;
+  var timeId;
+  var zhi=function(x,y){
+      return x+'-'+y;
+    }
+  var sence=$('#sence');
+  var input=$('input');
+  var huachangjing=function (){
+   sence.empty();
+   var wh=Math.floor(600/hang);
+   for(var i=0;i<hang;i++){
+    for(var j=0;j<hang;j++){
+    $('<div>')
+     .addClass('block')
+     .width(wh-1)
+     .height(wh-1)
+     .attr('id',zhi(i,j))
+     .appendTo(sence) 
+    }
+   }
+   sence.width(wh*hang).height(wh*hang);
+  }
+  huachangjing()
+  
+  
+  //添加蛇
+    var zidianshe={'0-0':true,'0-1':true,'0-2':true};
+    var she=[{x:0,y:0},{x:0,y:1},{x:0,y:2}];
+    var fangshe=function(){
+    she.forEach(function(v){
+    $( '#'+ zhi(v.x,v.y)).addClass('she');
+         });  
+    }
+      fangshe();
+  
+  
+  // //添加食物
+  var shiwu;
+  var fangshiwu=function(){
+        do{
+          var _x=Math.floor(Math.random()*hang);
+          var _y=Math.floor(Math.random()*hang);  
+        }while(zidianshe[_x+'-'+_y]);
+        shiwu={x:_x,y:_y};
+         $( '#'+ zhi(_x,_y)).addClass('shiwu');  
+      }
+      fangshiwu();
+  //让蛇沿着各个方向动起来
+  var fangxiang=39;
+  var move=function(){
+    var jiutou=she[she.length-1];
+     if(fangxiang===39){
+        var xintou={x:jiutou.x,y:jiutou.y+1}
+       }else if(fangxiang===40){
+        var xintou={x:jiutou.x+1,y:jiutou.y}
+       }else if(fangxiang===37){
+        var xintou={x:jiutou.x,y:jiutou.y-1}
+       }else if(fangxiang===38){
+        var xintou={x:jiutou.x-1,y:jiutou.y}
+       }
+       
+    //加头
+  
+    if(xintou.x===shiwu.x&&xintou.y===shiwu.y){
+     she.push(xintou);
+     $('#'+zhi(xintou.x,xintou.y)).addClass("she").removeClass("shiwu");
+         if($(input[1]).val()){
+          $(input[1]).val(she.length-3);
+         }else{
+          $(input[1]).val('0');
+         }
+     fangshiwu();
+    }else if(xintou.x>hang-1||xintou.x<0||xintou.y>hang-1||xintou.y<0||zidianshe[xintou.x+'-'+xintou.y]){
+          $('.tip').slideDown(1000);
+          $(input[0]).val(she.length-3);
+          clearInterval(timeId)
+    }else{
+     she.push(xintou);
+     var weiba=she.shift();
+     $('#'+zhi(xintou.x,xintou.y)).addClass("she");
+     zidianshe[xintou.x+'-'+xintou.y]=true;
+     delete zidianshe[weiba.x+'-'+weiba.y];
+     $('#'+zhi(weiba.x,weiba.y)).removeClass("she")
+        }       
+  } 
+    $(document).on('keydown',function(e){
+      if(Math.abs(e.keyCode-fangxiang)===2){return};
+      if(e.keyCode===37||e.keyCode===38||e.keyCode===39||e.keyCode===40){
+         fangxiang=e.keyCode;
+      }
+      else if(e.keyCode===32){
+        if(timeId){
+          clearInterval(timeId);
+          timeId=null;
+         }else{
+          timeId=setInterval(move,speed)
+       }
+      }       
+    })
+    input.on('keydown',function(e){
+      if(e.keyCode!==13){
+        return
+      }
+      hang=Number($('#biao').val());
+      $('span.active').removeClass('active');
+      if(hang<5||hang>40){
+        alert('请输入提示区间内的数');
+      }else{
+        if(hang===15){
+            $('span.active').removeClass('active');
+            $('span[data=15]').addClass('active')
+        }else if(hang===20){
+            $('span.active').removeClass('active');
+            $('span[data=20]').addClass('active')
+        }else if(hang===30){
+            $('span.active').removeClass('active');
+            $('span[data=30]').addClass('active')
+        }
+        huachangjing(hang);
+        fangshe();
+        fangshiwu();
+    }
+})
+ $('span[data]').on('click',function(){
+  $('span.active').removeClass('active');
+  $(this).addClass('active');
+  hang=Number($(this).attr('data'))
+  huachangjing(hang);
+  fangshe();
+  fangshiwu();
+ })
+ //点击进入游戏界面
+ $('.come').bind('click',function(){
+   $('.shape').fadeOut(500);
+ })
+  //点击关闭隐藏
+ $('.close').on('click',function(){
+  $('.tip').slideUp(1000);
+ })
+ //点击开始游戏
+ $('.start').on('click',function(){
+   if($('option:selected')){
+        speed=$('option:selected').val() 
+      }
+      clearInterval(timeId)
+      timeId=setInterval(move,speed)
+ })
+ //点击重新开始
+ $('.cxks').on('click',function(){
+  $('.tip').fadeOut(500);
+  $('#biao2').val(0);
+  fangxiang=39;
+  she=[{x:0,y:0},{x:0,y:1},{x:0,y:2}];
+  zidianshe={'0-0':true,'0-1':true,'0-2':true};
+  clearInterval(timeId);
+  huachangjing();
+  fangshe();
+  fangshiwu();
+ })
+  //点击退出游戏
+ $('.goout').on('click',function(){
+    $('#tan').text('感谢您对游戏的支持');
+    $('.come').text('GOOD BYE');
+    $('.shape').fadeIn(1000);
+ })
+    //点击游戏设置
+   $('.set').on('click',function(){
+    $('.jieshao').animate({height:10},500)
+   })
+   //设置完成
+   $('.done').on('click',function(){
+    $('.jieshao').animate({height:360},500)
+   })
+})
+</script>
+</html>
